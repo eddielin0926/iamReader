@@ -28,13 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.DownloadBtn = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // DownloadBtn
+            // 
+            this.DownloadBtn.Location = new System.Drawing.Point(366, 118);
+            this.DownloadBtn.Name = "DownloadBtn";
+            this.DownloadBtn.Size = new System.Drawing.Size(75, 23);
+            this.DownloadBtn.TabIndex = 0;
+            this.DownloadBtn.Text = "button1";
+            this.DownloadBtn.UseVisualStyleBackColor = true;
+            this.DownloadBtn.Click += new System.EventHandler(this.DownloadBtn_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DownloadBtn);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button DownloadBtn;
     }
 }
 

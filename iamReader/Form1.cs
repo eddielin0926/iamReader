@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -23,16 +24,24 @@ namespace iamReader
 
         private void DownloadBtn_Click(object sender, EventArgs e)
         {
-            string DownloadUrl = @"http://big5.quanben5.com/n/jingsongleyuan/xiaoshuo.html";
-            Console.WriteLine("Download from: {0}", DownloadUrl);
+            string sourceWeb = @"http://big5.quanben5.com";
+            string downloadUrl = @"http://big5.quanben5.com/n/jingsongleyuan/xiaoshuo.html";
 
-            WebClient Client = new WebClient();
-            var Data = Client.DownloadData(DownloadUrl);
-            string Page = Encoding.UTF8.GetString(Data);
-            HtmlDocument Document = new HtmlDocument();
-            Document.LoadHtml(Page);
+            WebClient client = new WebClient();
+            MemoryStream data = new MemoryStream(client.DownloadData(downloadUrl));
+            Console.WriteLine("Download data from: {0}", downloadUrl);
 
-            Console.WriteLine(Document.Text);
+            HtmlDocument document = new HtmlDocument();
+            document.Load(data, Encoding.UTF8);
+            Console.WriteLine("Decode data by UTF-8");
+
+            var chapterList = document.DocumentNode.SelectNodes("//li");
+            foreach (var chapter in chapterList)
+            {
+                Console.WriteLine("{0} : {1}", chapter.InnerText, sourceWeb + chapter.SelectSingleNode(".//a[@href]").Attributes["href"].Value);
+            }
+
+            Console.WriteLine("");
         }
     }
 }

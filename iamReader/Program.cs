@@ -21,8 +21,7 @@ namespace iamReader
                 // Determine whether the directory exists.
                 if (Directory.Exists(Library))
                 {
-                    Console.WriteLine("The directory library exists already.");
-                    Console.WriteLine("Path: {0}", Path.GetFullPath(Library));
+                    Console.WriteLine("The directory library exists already: {0}", Path.GetFullPath(Library));
                 }
                 else
                 {

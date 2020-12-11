@@ -77,33 +77,35 @@ namespace iamReader
 
             urlArray = urlList.ToArray();
 
-            IEnumerable<Task<int>> downloadTasksQuery =
+            IEnumerable<Task<string>> downloadTasksQuery =
                 from url in urlArray
                 select LoadChapterAsync(url, Client);
 
-            List<Task<int>> downloadTasks = downloadTasksQuery.ToList();
+            List<Task<string>> downloadTasks = downloadTasksQuery.ToList();
 
-            int totalByte = 0;
+            string page = null;
+            var contentList = new List<string>();
             while (downloadTasks.Any())
             {
-                Task<int> finishedTask = await Task.WhenAny(downloadTasks);
+                Task<string> finishedTask = await Task.WhenAny(downloadTasks);
                 downloadTasks.Remove(finishedTask);
-                totalByte += await finishedTask;
+                page = await finishedTask;
+                contentList.Add(page);
             }
 
             stopwatch.Stop();
 
-            Console.WriteLine($"\nTotal bytes returned:  {totalByte:#,#}");
+            // Console.WriteLine($"\nTotal bytes returned:  {totalByte:#,#}");
             Console.WriteLine($"Elapsed time:          {stopwatch.Elapsed}\n");
         }
-        public async Task<int> LoadChapterAsync(string url, HttpClient client)
+        public async Task<string> LoadChapterAsync(string url, HttpClient client)
         {
-            byte[] content = null;
+            string content = null;
             for (int i = 0; i < 10; i++)
             {
                 try
                 {
-                    content = await client.GetByteArrayAsync(url);
+                    content = await client.GetStringAsync(url);
                     break;
                 }
                 catch (Exception)
@@ -114,7 +116,7 @@ namespace iamReader
 
             Console.WriteLine($"{url,-60} {content.Length,10:#,#}");
 
-            return content.Length;
+            return content;
         }
     }
 

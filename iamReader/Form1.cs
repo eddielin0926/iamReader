@@ -15,6 +15,7 @@ namespace iamReader
         public Form1()
         {
             InitializeComponent();
+            
         }
     }
 }

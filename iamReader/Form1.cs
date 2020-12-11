@@ -24,24 +24,18 @@ namespace iamReader
 
         private void DownloadBtn_Click(object sender, EventArgs e)
         {
-            string sourceWeb = @"http://big5.quanben5.com";
             string downloadUrl = @"http://big5.quanben5.com/n/jingsongleyuan/xiaoshuo.html";
+            Book book = new Book();
 
-            WebClient client = new WebClient();
-            MemoryStream data = new MemoryStream(client.DownloadData(downloadUrl));
-            Console.WriteLine("Download data from: {0}", downloadUrl);
+            book.LoadBook(downloadUrl);
+            Console.WriteLine("Finish Download");
+        }
 
-            HtmlDocument document = new HtmlDocument();
-            document.Load(data, Encoding.UTF8);
-            Console.WriteLine("Decode data by UTF-8");
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DownloadBtn.PerformClick();
 
-            var chapterList = document.DocumentNode.SelectNodes("//li");
-            foreach (var chapter in chapterList)
-            {
-                Console.WriteLine("{0} : {1}", chapter.InnerText, sourceWeb + chapter.SelectSingleNode(".//a[@href]").Attributes["href"].Value);
-            }
-
-            Console.WriteLine("");
+            this.Hide();
         }
     }
 }

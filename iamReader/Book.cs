@@ -8,6 +8,7 @@ using System.Net;
 using HtmlAgilityPack;
 using System.Net.Http;
 using System.Diagnostics;
+using System.Threading;
 
 namespace iamReader
 {
@@ -21,6 +22,10 @@ namespace iamReader
         public int Article;
         public List<Chapter> Chapters;
 
+        static readonly HttpClient Client = new HttpClient
+        {
+            MaxResponseContentBufferSize = 1_000_000
+        };
         public IEnumerable<string> urlArray;
 
         public Book()
@@ -43,11 +48,13 @@ namespace iamReader
             Article = 0;
             Chapters = new List<Chapter>();
         }
-        public void LoadBook(string url)
+        public async Task LoadBook(string downloadUrl)
         {
-            string sourceWeb = @"http://big5.quanben5.com";
-            string downloadUrl = @"http://big5.quanben5.com/n/jingsongleyuan/xiaoshuo.html";
+            var stopwatch = Stopwatch.StartNew();
 
+            string sourceWeb = @"http://big5.quanben5.com";
+
+            // List out chapters
             WebClient client = new WebClient();
             MemoryStream data = new MemoryStream(client.DownloadData(downloadUrl));
             Console.WriteLine("Download data from: {0}", downloadUrl);
@@ -56,31 +63,58 @@ namespace iamReader
             document.Load(data, Encoding.UTF8);
             Console.WriteLine("Decode data by UTF-8");
 
-            int total = 0;
             var chapterList = document.DocumentNode.SelectNodes("//li");
             var urlList = new List<string>();
 
             Console.WriteLine("Start Download ...");
-            var stopwatch = Stopwatch.StartNew();
 
             foreach (var chapter in chapterList)
             {
                 string chapteTitle = chapter.InnerText;
                 string chapterUrl = sourceWeb + chapter.SelectSingleNode(".//a[@href]").Attributes["href"].Value;
                 urlList.Add(chapterUrl);
-                //Console.WriteLine(chapterUrl);
-                Chapter chap = new Chapter();
-                chap.LoadChapter(chapterUrl);
+            }
+
+            urlArray = urlList.ToArray();
+
+            IEnumerable<Task<int>> downloadTasksQuery =
+                from url in urlArray
+                select LoadChapterAsync(url, Client);
+
+            List<Task<int>> downloadTasks = downloadTasksQuery.ToList();
+
+            int totalByte = 0;
+            while (downloadTasks.Any())
+            {
+                Task<int> finishedTask = await Task.WhenAny(downloadTasks);
+                downloadTasks.Remove(finishedTask);
+                totalByte += await finishedTask;
             }
 
             stopwatch.Stop();
 
-            Console.WriteLine("Finish Download");
+            Console.WriteLine($"\nTotal bytes returned:  {totalByte:#,#}");
             Console.WriteLine($"Elapsed time:          {stopwatch.Elapsed}\n");
+        }
+        public async Task<int> LoadChapterAsync(string url, HttpClient client)
+        {
+            byte[] content = null;
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    content = await client.GetByteArrayAsync(url);
+                    break;
+                }
+                catch (Exception)
+                {
+                    Thread.Sleep(100);
+                }
+            }
 
-            urlArray = urlList.ToArray();
+            Console.WriteLine($"{url,-60} {content.Length,10:#,#}");
 
-            Console.WriteLine("Finish LoadBook");
+            return content.Length;
         }
     }
 
@@ -94,22 +128,22 @@ namespace iamReader
             Title = "";
             Content = "";
         }
-
-        public void LoadChapter(string url)
+        public Chapter(string title)
         {
-            WebClient client = new WebClient();
-            MemoryStream data = new MemoryStream(client.DownloadData(url));
-
-            HtmlDocument htmlDocument = new HtmlDocument();
+            Title = title;
+            Content = "";
+        }
+        public void DataDecode(string data)
+        {
+            var htmlDocument = new HtmlDocument();
             htmlDocument.Load(data, Encoding.UTF8);
 
             Title = htmlDocument.DocumentNode.SelectSingleNode("//h1[@class='title1']").InnerText;
             var text = htmlDocument.DocumentNode.SelectNodes("//div[@id='content']/p").ToList();
-            foreach (var line in text)
+            foreach(var line in text)
             {
                 Content += line.InnerText + "\n";
             }
-            Console.WriteLine(url);
         }
     }
 }

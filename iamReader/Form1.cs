@@ -28,7 +28,6 @@ namespace iamReader
             Book book = new Book();
 
             book.LoadBook(downloadUrl);
-            Console.WriteLine("Finish Download");
         }
 
         private void Form1_Load(object sender, EventArgs e)

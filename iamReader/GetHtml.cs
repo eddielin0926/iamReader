@@ -13,30 +13,29 @@ namespace iamReader
     class GetHtml
     {
         public Book book = new Book();
-        
-         public async void GetHtmlAsync()
-        {          
+
+        public async Task<string> GetHtmlAsync()
+        {
             HttpClient httpClient = new HttpClient();
-            
-            string html = await  httpClient.GetStringAsync(book.Path);
+
+            string html = await httpClient.GetStringAsync(book.Path);
             HtmlDocument htmlDocument = new HtmlDocument();
 
-            htmlDocument.LoadHtml(html);            
-            
-            var title= htmlDocument.DocumentNode.Descendants("div")
+            htmlDocument.LoadHtml(html);
+
+            var title = htmlDocument.DocumentNode.Descendants("div")
                 .Where(node => node.GetAttributeValue("class", "")
                 .Equals("title")).ToList();
-            var content = htmlDocument.DocumentNode.Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Equals("content")).ToList();
-
+            var content = htmlDocument.DocumentNode.SelectNodes("//div[@class='content']/p");
             book.Title = title[0].InnerText;
-            book.Content=content[0].InnerText;
+            foreach(var p in content)
+            {
+                book.Content += p.InnerText + "\r\n";
+            }
 
-               
-
+            return book.Content;
         }
-        public void Get_Website(string url= "https://tw.richity.com/novel/pagea/douluodalu-tangjiasanshao_2.html")
+        public void Get_Website(string url)
         {
             book.Path = url;
         }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.WebsiteTextBox = new System.Windows.Forms.TextBox();
             this.DownloadButton = new System.Windows.Forms.Button();
             this.DarkModeButton = new System.Windows.Forms.Button();
@@ -37,21 +38,25 @@
             this.FontSizeTextBox = new System.Windows.Forms.TextBox();
             this.IncreaseFontSize = new System.Windows.Forms.Button();
             this.DecreaseFontSize = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.WebsiteLabel = new System.Windows.Forms.Label();
+            this.StartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // WebsiteTextBox
             // 
-            this.WebsiteTextBox.Location = new System.Drawing.Point(305, 294);
+            this.WebsiteTextBox.Location = new System.Drawing.Point(182, 445);
             this.WebsiteTextBox.Name = "WebsiteTextBox";
             this.WebsiteTextBox.Size = new System.Drawing.Size(359, 25);
             this.WebsiteTextBox.TabIndex = 0;
             // 
             // DownloadButton
             // 
-            this.DownloadButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DownloadButton.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.DownloadButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.DownloadButton.Location = new System.Drawing.Point(692, 286);
+            this.DownloadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
+            this.DownloadButton.Font = new System.Drawing.Font("細明體-ExtB", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.DownloadButton.ForeColor = System.Drawing.Color.Linen;
+            this.DownloadButton.Location = new System.Drawing.Point(464, 484);
             this.DownloadButton.Name = "DownloadButton";
             this.DownloadButton.Size = new System.Drawing.Size(77, 34);
             this.DownloadButton.TabIndex = 1;
@@ -62,9 +67,9 @@
             // DarkModeButton
             // 
             this.DarkModeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DarkModeButton.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.DarkModeButton.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.DarkModeButton.ForeColor = System.Drawing.Color.White;
-            this.DarkModeButton.Location = new System.Drawing.Point(931, 79);
+            this.DarkModeButton.Location = new System.Drawing.Point(568, 30);
             this.DarkModeButton.Name = "DarkModeButton";
             this.DarkModeButton.Size = new System.Drawing.Size(164, 38);
             this.DarkModeButton.TabIndex = 3;
@@ -75,9 +80,9 @@
             // HomeButton
             // 
             this.HomeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.HomeButton.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HomeButton.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;
-            this.HomeButton.Location = new System.Drawing.Point(931, 587);
+            this.HomeButton.Location = new System.Drawing.Point(568, 129);
             this.HomeButton.Name = "HomeButton";
             this.HomeButton.Size = new System.Drawing.Size(164, 42);
             this.HomeButton.TabIndex = 4;
@@ -87,19 +92,19 @@
             // 
             // NovelTextBox
             // 
-            this.NovelTextBox.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.NovelTextBox.Location = new System.Drawing.Point(12, 79);
-            this.NovelTextBox.MaximumSize = new System.Drawing.Size(890, 500);
-            this.NovelTextBox.MinimumSize = new System.Drawing.Size(890, 500);
+            this.NovelTextBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.NovelTextBox.Location = new System.Drawing.Point(22, 84);
+            this.NovelTextBox.MaximumSize = new System.Drawing.Size(1000, 1000);
+            this.NovelTextBox.MinimumSize = new System.Drawing.Size(300, 600);
             this.NovelTextBox.Name = "NovelTextBox";
-            this.NovelTextBox.Size = new System.Drawing.Size(890, 27);
+            this.NovelTextBox.Size = new System.Drawing.Size(540, 600);
             this.NovelTextBox.TabIndex = 6;
             // 
             // ChapterLabel
             // 
             this.ChapterLabel.AutoSize = true;
             this.ChapterLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChapterLabel.Location = new System.Drawing.Point(12, 26);
+            this.ChapterLabel.Location = new System.Drawing.Point(22, 30);
             this.ChapterLabel.MaximumSize = new System.Drawing.Size(200, 30);
             this.ChapterLabel.MinimumSize = new System.Drawing.Size(200, 30);
             this.ChapterLabel.Name = "ChapterLabel";
@@ -110,14 +115,14 @@
             // 
             // FontSizeTextBox
             // 
-            this.FontSizeTextBox.Location = new System.Drawing.Point(931, 133);
+            this.FontSizeTextBox.Location = new System.Drawing.Point(568, 84);
             this.FontSizeTextBox.Name = "FontSizeTextBox";
             this.FontSizeTextBox.Size = new System.Drawing.Size(48, 25);
             this.FontSizeTextBox.TabIndex = 8;
             // 
             // IncreaseFontSize
             // 
-            this.IncreaseFontSize.Location = new System.Drawing.Point(1001, 133);
+            this.IncreaseFontSize.Location = new System.Drawing.Point(638, 84);
             this.IncreaseFontSize.Name = "IncreaseFontSize";
             this.IncreaseFontSize.Size = new System.Drawing.Size(37, 23);
             this.IncreaseFontSize.TabIndex = 9;
@@ -127,7 +132,7 @@
             // 
             // DecreaseFontSize
             // 
-            this.DecreaseFontSize.Location = new System.Drawing.Point(1044, 133);
+            this.DecreaseFontSize.Location = new System.Drawing.Point(681, 84);
             this.DecreaseFontSize.Name = "DecreaseFontSize";
             this.DecreaseFontSize.Size = new System.Drawing.Size(37, 23);
             this.DecreaseFontSize.TabIndex = 10;
@@ -135,12 +140,66 @@
             this.DecreaseFontSize.UseVisualStyleBackColor = true;
             this.DecreaseFontSize.Click += new System.EventHandler(this.DecreaseFontSize_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(-19, -19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
+            this.ExitButton.Font = new System.Drawing.Font("細明體-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ExitButton.ForeColor = System.Drawing.Color.Linen;
+            this.ExitButton.Location = new System.Drawing.Point(296, 556);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(140, 47);
+            this.ExitButton.TabIndex = 14;
+            this.ExitButton.Text = "離開";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // WebsiteLabel
+            // 
+            this.WebsiteLabel.AutoSize = true;
+            this.WebsiteLabel.BackColor = System.Drawing.Color.Transparent;
+            this.WebsiteLabel.Font = new System.Drawing.Font("細明體-ExtB", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.WebsiteLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
+            this.WebsiteLabel.Location = new System.Drawing.Point(181, 405);
+            this.WebsiteLabel.Name = "WebsiteLabel";
+            this.WebsiteLabel.Size = new System.Drawing.Size(110, 24);
+            this.WebsiteLabel.TabIndex = 15;
+            this.WebsiteLabel.Text = "輸入網址";
+            // 
+            // StartButton
+            // 
+            this.StartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
+            this.StartButton.Font = new System.Drawing.Font("細明體-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.StartButton.ForeColor = System.Drawing.Color.Linen;
+            this.StartButton.Location = new System.Drawing.Point(296, 484);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(140, 47);
+            this.StartButton.TabIndex = 12;
+            this.StartButton.Text = "開始";
+            this.StartButton.UseVisualStyleBackColor = false;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1134, 853);
+            this.BackColor = System.Drawing.Color.Linen;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(750, 1000);
+            this.Controls.Add(this.WebsiteLabel);
+            this.Controls.Add(this.DownloadButton);
+            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.StartButton);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.DecreaseFontSize);
             this.Controls.Add(this.IncreaseFontSize);
             this.Controls.Add(this.FontSizeTextBox);
@@ -148,8 +207,9 @@
             this.Controls.Add(this.NovelTextBox);
             this.Controls.Add(this.HomeButton);
             this.Controls.Add(this.DarkModeButton);
-            this.Controls.Add(this.DownloadButton);
             this.Controls.Add(this.WebsiteTextBox);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "iamReader";
@@ -169,6 +229,10 @@
         private System.Windows.Forms.TextBox FontSizeTextBox;
         private System.Windows.Forms.Button IncreaseFontSize;
         private System.Windows.Forms.Button DecreaseFontSize;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Label WebsiteLabel;
+        private System.Windows.Forms.Button StartButton;
     }
 }
 

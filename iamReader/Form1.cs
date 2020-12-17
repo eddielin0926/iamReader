@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace iamReader
@@ -17,12 +18,12 @@ namespace iamReader
         public Form1()
         {
             InitializeComponent();
-            Home();
+            Cover();
            
         }
 
         private void DownloadButton_Click(object sender, EventArgs e) {
-            Read();
+            Chapter();
         }
 
 
@@ -77,8 +78,71 @@ namespace iamReader
 
         // 主頁
         private void Home() {
+            var dir = Directory.GetCurrentDirectory();
+            var path = Path.Combine(dir, "Background.png");
+            Image Background = new Bitmap(path);
+            this.BackgroundImage = Background;
+
+            StartButton.Visible = false;
+            ExitButton.Visible = false;
+
+            WebsiteLabel.Visible = true;
             WebsiteTextBox.Visible = true;
             DownloadButton.Visible = true;
+
+            NovelTextBox.Visible = false;
+            DarkModeButton.Visible = false;
+            HomeButton.Visible = false;
+            ChapterLabel.Visible = false;
+            FontSizeTextBox.Visible = false;
+            IncreaseFontSize.Visible = false;
+            DecreaseFontSize.Visible = false;
+        }
+
+        private void Cover() {
+            StartButton.Visible = true;
+            ExitButton.Visible = true;
+
+            WebsiteLabel.Visible = false;
+            WebsiteTextBox.Visible = false;
+            DownloadButton.Visible = false;
+
+            NovelTextBox.Visible = false;
+            DarkModeButton.Visible = false;
+            HomeButton.Visible = false;
+            ChapterLabel.Visible = false;
+            FontSizeTextBox.Visible = false;
+            IncreaseFontSize.Visible = false;
+            DecreaseFontSize.Visible = false;
+        }
+
+        private void Chapter() {
+            // 章節數
+            int ChapterNum = 20;
+            Button[] ChapterButton = new Button[ChapterNum];
+            int ButtonWidth = 90;
+            int ButtonHeight = 40;
+            for (int i = 0; i < ChapterNum; i++) {
+                ChapterButton[i] = new Button();
+                ChapterButton[i].Size = new Size(ButtonWidth, ButtonHeight);
+                int ButtonLocationX = this.Width / 2 - ButtonWidth / 2 + (i % 3 - 1) * (ButtonWidth + 10);
+                int ButtonLocationY = this.Height / 2 - ButtonHeight / 2 + (i / 3 - (ChapterNum / 3 + 1) / 2) * (ButtonHeight + 10);
+                ChapterButton[i].Location = new Point(ButtonLocationX,ButtonLocationY);
+                Controls.Add(ChapterButton[i]);
+                ChapterButton[i].Click += new EventHandler(ChapterButton_click);
+                ChapterButton[i].Text = "第" + (i+1) + "章";
+                ChapterButton[i].BackColor = Color.FromArgb(112, 92, 65);
+                ChapterButton[i].ForeColor = Color.Linen;
+                ChapterButton[i].Font = new Font("細明體-ExtB", 10);
+            }
+            
+            StartButton.Visible = false;
+            ExitButton.Visible = false;
+
+            WebsiteLabel.Visible = false;
+            WebsiteTextBox.Visible = false;
+            DownloadButton.Visible = false;
+
             NovelTextBox.Visible = false;
             DarkModeButton.Visible = false;
             HomeButton.Visible = false;
@@ -97,8 +161,13 @@ namespace iamReader
             string content = await getHtml.GetHtmlAsync();
             Console.WriteLine("Loading content");
 
+            StartButton.Visible = false;
+            ExitButton.Visible = false;
+
+            WebsiteLabel.Visible = false;
             WebsiteTextBox.Visible = false;
             DownloadButton.Visible = false;
+
             NovelTextBox.Visible = true;
             DarkModeButton.Visible = true;
             HomeButton.Visible = true;
@@ -124,6 +193,12 @@ namespace iamReader
             Home();
         }
 
+        private void ChapterButton_click(object sender, EventArgs e) {
+            Read();
+            Button Button = (Button)sender;
+            ChapterLabel.Text = Button.Text;
+        }
+
         // 調整字體大小
         private void IncreaseFontSize_Click(object sender, EventArgs e)
         {
@@ -137,6 +212,14 @@ namespace iamReader
             Console.WriteLine("Decrease font size");
             NovelTextBox.Font = new Font(NovelTextBox.Font.FontFamily, NovelTextBox.Font.Size - 1);
             FontSizeTextBox.Text = Convert.ToString(NovelTextBox.Font.Size);
+        }
+
+        private void StartButton_Click(object sender, EventArgs e) {
+            Home();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
     }
 }

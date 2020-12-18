@@ -15,5 +15,6 @@ namespace iamReader
         public string Author;
         public string Content;
         public int Article;
+        public List<Chapter> chapter_List=new List<Chapter>();
     }
 }

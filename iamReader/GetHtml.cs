@@ -12,31 +12,29 @@ namespace iamReader
 {
     class GetHtml
     {
-        public Book book = new Book();
         
-         public async void GetHtmlAsync()
-        {          
+        public Book book = new Book();
+        static public Chapter chapter;
+        public async Task GetHtmlAsync()
+        {
             HttpClient httpClient = new HttpClient();
-            
-            string html = await  httpClient.GetStringAsync(book.Path);
+            string html = await httpClient.GetStringAsync(book.Path);
             HtmlDocument htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(html);
 
-            htmlDocument.LoadHtml(html);            
-            
-            var title= htmlDocument.DocumentNode.Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Equals("title")).ToList();
-            var content = htmlDocument.DocumentNode.Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Equals("content")).ToList();
-
-            book.Title = title[0].InnerText;
-            book.Content=content[0].InnerText;
-
-               
-
+            var chapterList = htmlDocument.DocumentNode.SelectNodes("//li");
+            for (int i = 55; i < chapterList.Count; i++)
+            {
+                var chapterUrl = chapterList[i];
+                chapter = new Chapter(chapterUrl.InnerText);
+                chapter.Website = "https:" + chapterUrl.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+                Console.Write(chapter.Title + chapter.Website + "\r\n");
+                await chapter.Page_Download();
+                Console.Write("download" + "\r\n");
+                book.chapter_List.Add(chapter);
+            } 
         }
-        public void Get_Website(string url= "https://tw.richity.com/novel/pagea/douluodalu-tangjiasanshao_2.html")
+        public void Get_Website(string url)
         {
             book.Path = url;
         }

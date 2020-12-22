@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using HtmlAgilityPack;
 using System.Xml;
+using System.Timers;
 
 
 namespace iamReader
@@ -27,10 +28,24 @@ namespace iamReader
             {
                 var chapterUrl = chapterList[i];
                 chapter = new Chapter(chapterUrl.InnerText);
-                chapter.Website = "https:" + chapterUrl.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
-                Console.Write(chapter.Title + chapter.Website + "\r\n");
-                await chapter.Page_Download();
-                Console.Write("download" + "\r\n");
+
+                try
+                {
+                    chapter.Website = "https:" + chapterUrl.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+                    Console.Write(chapter.Title + chapter.Website + "\r\n");
+                    Console.Write("download" + "\r\n");
+                    await chapter.Page_Download();
+                }
+                catch
+                {
+                    chapter.Content = "to next chapter";
+                    Console.Write("NULL content" + "\r\n");
+                }                        
+                   
+                    
+                    
+                
+                
                 book.chapter_List.Add(chapter);
             } 
         }

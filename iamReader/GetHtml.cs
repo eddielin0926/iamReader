@@ -22,7 +22,20 @@ namespace iamReader
             string html = await httpClient.GetStringAsync(book.Path);
             HtmlDocument htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
-
+            //book detail
+            var title = htmlDocument.DocumentNode.Descendants("span")
+                .Where(node => node.GetAttributeValue("class", "")
+                .Equals("title")).ToList();
+            book.Title = title[0].InnerText;
+            var content = htmlDocument.DocumentNode.Descendants("div")
+                .Where(node => node.GetAttributeValue("class", "")
+                .Equals("description")).ToList();
+            book.Content = content[0].InnerText;
+            var author = htmlDocument.DocumentNode.Descendants("span")
+                .Where(node => node.GetAttributeValue("class", "")
+                .Equals("author")).ToList();
+            book.Author = author[0].InnerText;
+            //chapter_list
             var chapterList = htmlDocument.DocumentNode.SelectNodes("//li");
             for (int i = 55; i < chapterList.Count; i++)
             {

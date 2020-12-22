@@ -52,7 +52,7 @@
             this.WebsiteTextBox.Location = new System.Drawing.Point(175, 390);
             this.WebsiteTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WebsiteTextBox.Name = "WebsiteTextBox";
-            this.WebsiteTextBox.Size = new System.Drawing.Size(359, 25);
+            this.WebsiteTextBox.Size = new System.Drawing.Size(270, 22);
             this.WebsiteTextBox.TabIndex = 0;
             // 
             // DownloadButton
@@ -63,7 +63,7 @@
             this.DownloadButton.Location = new System.Drawing.Point(457, 429);
             this.DownloadButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(77, 34);
+            this.DownloadButton.Size = new System.Drawing.Size(58, 27);
             this.DownloadButton.TabIndex = 1;
             this.DownloadButton.Text = "下載";
             this.DownloadButton.UseVisualStyleBackColor = false;
@@ -77,7 +77,7 @@
             this.DarkModeButton.Location = new System.Drawing.Point(556, 16);
             this.DarkModeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DarkModeButton.Name = "DarkModeButton";
-            this.DarkModeButton.Size = new System.Drawing.Size(164, 38);
+            this.DarkModeButton.Size = new System.Drawing.Size(123, 30);
             this.DarkModeButton.TabIndex = 3;
             this.DarkModeButton.Text = "深色模式";
             this.DarkModeButton.UseVisualStyleBackColor = false;
@@ -91,7 +91,7 @@
             this.HomeButton.Location = new System.Drawing.Point(556, 179);
             this.HomeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(164, 42);
+            this.HomeButton.Size = new System.Drawing.Size(123, 34);
             this.HomeButton.TabIndex = 4;
             this.HomeButton.Text = "回主頁";
             this.HomeButton.UseVisualStyleBackColor = false;
@@ -128,7 +128,7 @@
             this.FontSizeTextBox.Location = new System.Drawing.Point(556, 70);
             this.FontSizeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FontSizeTextBox.Name = "FontSizeTextBox";
-            this.FontSizeTextBox.Size = new System.Drawing.Size(48, 25);
+            this.FontSizeTextBox.Size = new System.Drawing.Size(37, 22);
             this.FontSizeTextBox.TabIndex = 8;
             // 
             // IncreaseFontSize
@@ -217,7 +217,7 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

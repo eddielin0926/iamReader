@@ -21,8 +21,10 @@ namespace iamReader
             Cover();
            
         }
-
-        private void DownloadButton_Click(object sender, EventArgs e) {
+        GetHtml getHtml = new GetHtml();
+        private async void DownloadButton_Click(object sender, EventArgs e) {
+            DownloadButton.Enabled = false;
+            await Read();
             Chapter();
         }
 
@@ -151,7 +153,7 @@ namespace iamReader
 
         // 閱讀畫面
         private async Task Read() {
-            var getHtml = new GetHtml();
+            
             string url = WebsiteTextBox.Text;
             Console.WriteLine("Download from: {0}", url);
             getHtml.Get_Website(url);
@@ -189,10 +191,12 @@ namespace iamReader
         private void OpenCloseBook(bool open) {
             
             if (open) {
+                NovelTextBox.Visible = true;
                 this.Width *= 2;
                 this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                           (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
             } else {
+                NovelTextBox.Visible=false;
                 this.Width /= 2;
                 this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                           (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
@@ -209,15 +213,24 @@ namespace iamReader
         private void ChapterButton_click(object sender, EventArgs e) {
             Button Button = (Button)sender;
             ChapterLabel.Text = Button.Text;
-            Read();
+            for (int i = 0; i < getHtml.book.chapter_List.Count; i++)
+            {
+                if (getHtml.book.chapter_List.ElementAt(i).Title == Button.Text) {
+                    NovelTextBox.Text = getHtml.book.chapter_List.ElementAt(i).Content;
+                }
+
+
+            }
+            //Read();
             OpenCloseBook(true);
             GenerateChapterButton(false);
         }
 
 
-        int ChapterNum = 20;
+        
         List<Button> ChapterButton = new List<Button>();
         private void GenerateChapterButton(bool Generate) {
+            int ChapterNum =getHtml.book.chapter_List.Count;
             if (Generate) {
                 int ButtonWidth = 90;
                 int ButtonHeight = 40;
@@ -229,7 +242,9 @@ namespace iamReader
                     btn.Location = new Point(ButtonLocationX, ButtonLocationY);
                     Controls.Add(btn);
                     btn.Click += new EventHandler(ChapterButton_click);
-                    btn.Text = "第" + (i + 1) + "章";
+                    //btn.Text = "第" + (i + 1) + "章";
+                    btn.Text = getHtml.book.chapter_List.ElementAt(i).Title;
+
                     btn.BackColor = Color.FromArgb(112, 92, 65);
                     btn.ForeColor = Color.Linen;
                     btn.Font = new Font("細明體-ExtB", 10);

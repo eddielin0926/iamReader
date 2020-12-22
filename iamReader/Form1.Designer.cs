@@ -106,7 +106,7 @@
             this.NovelTextBox.MaximumSize = new System.Drawing.Size(1000, 1000);
             this.NovelTextBox.MinimumSize = new System.Drawing.Size(300, 600);
             this.NovelTextBox.Name = "NovelTextBox";
-            this.NovelTextBox.Size = new System.Drawing.Size(529, 600);
+            this.NovelTextBox.Size = new System.Drawing.Size(529, 23);
             this.NovelTextBox.TabIndex = 6;
             // 
             // ChapterLabel
@@ -175,7 +175,7 @@
             this.WebsiteLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
             this.WebsiteLabel.Location = new System.Drawing.Point(171, 352);
             this.WebsiteLabel.Name = "WebsiteLabel";
-            this.WebsiteLabel.Size = new System.Drawing.Size(110, 24);
+            this.WebsiteLabel.Size = new System.Drawing.Size(93, 19);
             this.WebsiteLabel.TabIndex = 15;
             this.WebsiteLabel.Text = "輸入網址";
             // 
@@ -192,14 +192,6 @@
             this.StartButton.Text = "開始";
             this.StartButton.UseVisualStyleBackColor = false;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
-            // 
-            // OpenBookTimer
-            // 
-           
-            // 
-            // CloseBookTimer
-            // 
-
             // 
             // BackToChapterButton
             // 

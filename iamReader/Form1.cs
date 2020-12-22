@@ -155,7 +155,7 @@ namespace iamReader
             string url = WebsiteTextBox.Text;
             Console.WriteLine("Download from: {0}", url);
             getHtml.Get_Website(url);
-            string content = await getHtml.GetHtmlAsync();
+            await getHtml.GetHtmlAsync();
             Console.WriteLine("Loading content");
 
             StartButton.Visible = false;
@@ -180,8 +180,8 @@ namespace iamReader
             NovelTextBox.SelectedText = NovelTextBox.Text + "\r\n";
             NovelTextBox.ScrollToCaret();
 
-           
-            NovelTextBox.Text = content;
+            //測試用隨便打的
+            NovelTextBox.Text = getHtml.book.chapter_List.ElementAt(1).Content;
 
             FontSizeTextBox.Text = Convert.ToString(NovelTextBox.Font.Size);
         }

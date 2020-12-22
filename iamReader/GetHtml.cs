@@ -12,28 +12,27 @@ namespace iamReader
 {
     class GetHtml
     {
+        
         public Book book = new Book();
-
-        public async Task<string> GetHtmlAsync()
+        static public Chapter chapter;
+        public async Task GetHtmlAsync()
         {
             HttpClient httpClient = new HttpClient();
-
             string html = await httpClient.GetStringAsync(book.Path);
             HtmlDocument htmlDocument = new HtmlDocument();
-
             htmlDocument.LoadHtml(html);
 
-            var title = htmlDocument.DocumentNode.Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Equals("title")).ToList();
-            var content = htmlDocument.DocumentNode.SelectNodes("//div[@class='content']/p");
-            book.Title = title[0].InnerText;
-            foreach(var p in content)
+            var chapterList = htmlDocument.DocumentNode.SelectNodes("//li");
+            for (int i = 55; i < chapterList.Count; i++)
             {
-                book.Content += p.InnerText + "\r\n";
-            }
-
-            return book.Content;
+                var chapterUrl = chapterList[i];
+                chapter = new Chapter(chapterUrl.InnerText);
+                chapter.Website = "https:" + chapterUrl.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+                Console.Write(chapter.Title + chapter.Website + "\r\n");
+                await chapter.Page_Download();
+                Console.Write("download" + "\r\n");
+                book.chapter_List.Add(chapter);
+            } 
         }
         public void Get_Website(string url)
         {

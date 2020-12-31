@@ -13,7 +13,6 @@ namespace iamReader
 {
     class GetHtml
     {
-        
         public Book book = new Book();
         static public Chapter chapter;
         public async Task GetHtmlAsync()
@@ -41,7 +40,6 @@ namespace iamReader
             {
                 var chapterUrl = chapterList[i];
                 chapter = new Chapter(chapterUrl.InnerText);
-
                 try
                 {
                     chapter.Website = "https:" + chapterUrl.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
@@ -53,14 +51,9 @@ namespace iamReader
                 {
                     chapter.Content = "to next chapter";
                     Console.Write("NULL content" + "\r\n");
-                }                        
-                   
-                    
-                    
-                
-                
+                }
                 book.chapter_List.Add(chapter);
-            } 
+            }
         }
         public void Get_Website(string url)
         {

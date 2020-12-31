@@ -12,7 +12,7 @@ using System.IO;
 
 namespace iamReader
 {
-        
+
     public partial class Form1 : Form
     {
         public Form1()
@@ -23,17 +23,19 @@ namespace iamReader
         }
 
         GetHtml getHtml = new GetHtml();
-        private async void DownloadButton_Click(object sender, EventArgs e) {
-            if (WebsiteTextBox.Text != " ") {
+        private async void DownloadButton_Click(object sender, EventArgs e)
+        {
+            if (WebsiteTextBox.Text != " ")
+            {
                 DownloadButton.Enabled = false;
                 Loading();
                 await Read();
                 Chapter();
-            } else
+            }
+            else
+            {
                 PleaseEnterLabel.Visible = true;
-
-            
-            
+            }
         }
 
 
@@ -41,9 +43,11 @@ namespace iamReader
         bool DarkMode = false;
 
         // 深色模式
-        private void DarkModeButton_Click(object sender, EventArgs e) {
+        private void DarkModeButton_Click(object sender, EventArgs e)
+        {
             // 改為淺色模式
-            if (DarkMode) {
+            if (DarkMode)
+            {
                 Console.WriteLine("Turn to bright mode");
                 DarkMode = false;
 
@@ -75,7 +79,8 @@ namespace iamReader
                 DarkModeButton.Text = "深色模式";
             }
             // 改為深色模式
-            else {
+            else
+            {
                 Console.WriteLine("Turn to dark mode");
                 DarkMode = true;
 
@@ -109,7 +114,8 @@ namespace iamReader
         }
 
         // 主頁
-        private void Home() {
+        private void Home()
+        {
             var dir = Directory.GetCurrentDirectory();
             var path = Path.Combine(dir, "Background.png");
             Image Background = new Bitmap(path);
@@ -138,7 +144,8 @@ namespace iamReader
             WebsiteTextBox.Text = " ";
         }
 
-        private void Cover() {
+        private void Cover()
+        {
             var dir = Directory.GetCurrentDirectory();
             var path = Path.Combine(dir, "Cover3.png");
             Image Background = new Bitmap(path);
@@ -163,13 +170,17 @@ namespace iamReader
             DecreaseFontSize.Visible = false;
         }
 
-        private void Chapter() {
-            if (!DarkMode) {
+        private void Chapter()
+        {
+            if (!DarkMode)
+            {
                 var dir = Directory.GetCurrentDirectory();
                 var path = Path.Combine(dir, "Background.png");
                 Image Background = new Bitmap(path);
                 this.BackgroundImage = Background;
-            } else {
+            }
+            else
+            {
                 var dir = Directory.GetCurrentDirectory();
                 var path = Path.Combine(dir, "BackgroundDark.png");
                 Image Background = new Bitmap(path);
@@ -199,25 +210,26 @@ namespace iamReader
         }
 
         // 閱讀畫面
-        private async Task Read() {
-            
+        private async Task Read()
+        {
             string url = WebsiteTextBox.Text;
             Console.WriteLine("Download from: {0}", url);
             getHtml.Get_Website(url);
             await getHtml.GetHtmlAsync();
             Console.WriteLine("Loading content");
-
-            
-            
         }
 
-        private void ReadScene() {
-            if (DarkMode) {
+        private void ReadScene()
+        {
+            if (DarkMode)
+            {
                 var dir = Directory.GetCurrentDirectory();
                 var path = Path.Combine(dir, "BackgroundDark.png");
                 Image Background = new Bitmap(path);
                 this.BackgroundImage = Background;
-            } else {
+            }
+            else
+            {
                 var dir = Directory.GetCurrentDirectory();
                 var path = Path.Combine(dir, "Background.png");
                 Image Background = new Bitmap(path);
@@ -256,7 +268,8 @@ namespace iamReader
             FontSizeTextBox.Text = Convert.ToString(NovelTextBox.Font.Size);
         }
 
-        private void Loading() {
+        private void Loading()
+        {
             StartButton.Visible = false;
             ExitButton.Visible = false;
 
@@ -278,14 +291,18 @@ namespace iamReader
 
         }
 
-        private void OpenCloseBook(bool open) {
+        private void OpenCloseBook(bool open)
+        {
 
-            if (open) {
+            if (open)
+            {
                 NovelTextBox.Visible = true; ;
                 this.Width *= 2;
                 this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                           (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
-            } else {
+            }
+            else
+            {
                 NovelTextBox.Visible = false;
                 this.Width /= 2;
                 this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
@@ -294,18 +311,20 @@ namespace iamReader
         }
 
         // 回主頁
-        private void HomeButton_Click(object sender, EventArgs e) {
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
             OpenCloseBook(false);
             Home();
-            
+
         }
 
-        private void ChapterButton_click(object sender, EventArgs e) {
+        private void ChapterButton_click(object sender, EventArgs e)
+        {
             Button Button = (Button)sender;
             ChapterLabel.Text = Button.Text;
             for (int i = 0; i < getHtml.book.chapter_List.Count; i++)
             {
-                if (getHtml.book.chapter_List.ElementAt(i).Title == Button.Text) 
+                if (getHtml.book.chapter_List.ElementAt(i).Title == Button.Text)
                 {
                     NovelTextBox.Text = getHtml.book.chapter_List.ElementAt(i).Content;
                 }
@@ -313,12 +332,14 @@ namespace iamReader
             OpenCloseBook(true);
             GenerateChapterButton(false);
             ReadScene();
-        }      
+        }
         List<Button> ChapterButtonList = new List<Button>();
         List<Panel> ChapterPanelList = new List<Panel>();
-        private void GenerateChapterButton(bool Generate) {
+        private void GenerateChapterButton(bool Generate)
+        {
             int ChapterNum = getHtml.book.chapter_List.Count;
-            if (Generate) {
+            if (Generate)
+            {
                 Panel ChapterPanel = new Panel();
                 ChapterPanel.SetBounds(10, 30, this.Width - 60, this.Height - 100);
                 ChapterPanel.AutoScroll = true;
@@ -327,7 +348,8 @@ namespace iamReader
                 ChapterPanelList.Add(ChapterPanel);
                 int ButtonWidth = 140;
                 int ButtonHeight = 60;
-                for (int i = 0; i < ChapterNum; i++) {
+                for (int i = 0; i < ChapterNum; i++)
+                {
                     Button btn = new Button();
                     btn.Size = new Size(ButtonWidth, ButtonHeight);
                     int ButtonLocationX = ChapterPanel.Width / 2 - ButtonWidth / 2 + (i % 3 - 1) * (ButtonWidth + 10);
@@ -337,10 +359,13 @@ namespace iamReader
                     btn.Click += new EventHandler(ChapterButton_click);
                     btn.Text = getHtml.book.chapter_List.ElementAt(i).Title;
 
-                    if (!DarkMode) {
+                    if (!DarkMode)
+                    {
                         btn.BackColor = Color.Linen;
                         btn.ForeColor = Color.Black;
-                    } else {
+                    }
+                    else
+                    {
                         btn.BackColor = Color.FromArgb(64, 64, 64);
                         btn.ForeColor = Color.White;
                     }
@@ -348,11 +373,15 @@ namespace iamReader
                     ChapterButtonList.Add(btn);
                     ChapterPanel.Controls.Add(btn);
                 }
-            } else {
-                for (int i = 0; i < ChapterButtonList.Count; i++) {
+            }
+            else
+            {
+                for (int i = 0; i < ChapterButtonList.Count; i++)
+                {
                     ChapterButtonList[i].Dispose();
                 }
-                for (int i = 0; i < ChapterPanelList.Count; i++) {
+                for (int i = 0; i < ChapterPanelList.Count; i++)
+                {
                     ChapterPanelList[i].Dispose();
                 }
             }
@@ -373,20 +402,20 @@ namespace iamReader
             FontSizeTextBox.Text = Convert.ToString(NovelTextBox.Font.Size);
         }
 
-        private void StartButton_Click(object sender, EventArgs e) {
+        private void StartButton_Click(object sender, EventArgs e)
+        {
             Home();
         }
 
-        private void ExitButton_Click(object sender, EventArgs e) {
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
             Application.Exit();
         }
 
-       
-
-        private void BackToChapterButton_Click(object sender, EventArgs e) {
+        private void BackToChapterButton_Click(object sender, EventArgs e)
+        {
             OpenCloseBook(false);
             Chapter();
-           
         }
     }
 }

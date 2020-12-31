@@ -45,7 +45,6 @@
             this.OpenBookTimer = new System.Windows.Forms.Timer(this.components);
             this.CloseBookTimer = new System.Windows.Forms.Timer(this.components);
             this.BackToChapterButton = new System.Windows.Forms.Button();
-            this.PleaseEnterLabel = new System.Windows.Forms.Label();
             this.LoadingLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -215,18 +214,6 @@
             this.BackToChapterButton.UseVisualStyleBackColor = false;
             this.BackToChapterButton.Click += new System.EventHandler(this.BackToChapterButton_Click);
             // 
-            // PleaseEnterLabel
-            // 
-            this.PleaseEnterLabel.AutoSize = true;
-            this.PleaseEnterLabel.BackColor = System.Drawing.Color.Transparent;
-            this.PleaseEnterLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.PleaseEnterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.PleaseEnterLabel.Location = new System.Drawing.Point(178, 453);
-            this.PleaseEnterLabel.Name = "PleaseEnterLabel";
-            this.PleaseEnterLabel.Size = new System.Drawing.Size(112, 25);
-            this.PleaseEnterLabel.TabIndex = 17;
-            this.PleaseEnterLabel.Text = "請輸入網址";
-            // 
             // LoadingLabel
             // 
             this.LoadingLabel.AutoSize = true;
@@ -249,7 +236,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(732, 953);
             this.Controls.Add(this.LoadingLabel);
-            this.Controls.Add(this.PleaseEnterLabel);
             this.Controls.Add(this.BackToChapterButton);
             this.Controls.Add(this.WebsiteLabel);
             this.Controls.Add(this.DownloadButton);
@@ -291,7 +277,6 @@
         private System.Windows.Forms.Timer OpenBookTimer;
         private System.Windows.Forms.Timer CloseBookTimer;
         private System.Windows.Forms.Button BackToChapterButton;
-        private System.Windows.Forms.Label PleaseEnterLabel;
         private System.Windows.Forms.Label LoadingLabel;
     }
 }

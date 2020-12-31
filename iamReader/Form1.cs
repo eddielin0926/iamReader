@@ -12,20 +12,23 @@ using System.IO;
 
 namespace iamReader
 {
-
     public partial class Form1 : Form
     {
+        public bool DarkMode = false; // 預設為淺色模式
+        private GetHtml getHtml = new GetHtml();
+        List<Button> ChapterButtonList = new List<Button>();
+        List<Panel> ChapterPanelList = new List<Panel>();
+        Book NowBook = null;
+
         public Form1()
         {
             InitializeComponent();
             Home();
             Cover();
         }
-
-        GetHtml getHtml = new GetHtml();
         private async void DownloadButton_Click(object sender, EventArgs e)
         {
-            if (WebsiteTextBox.Text != " ")
+            if (Uri.IsWellFormedUriString(WebsiteTextBox.Text, UriKind.Absolute))
             {
                 DownloadButton.Enabled = false;
                 Loading();
@@ -34,13 +37,10 @@ namespace iamReader
             }
             else
             {
-                PleaseEnterLabel.Visible = true;
+                MessageBox.Show("請輸入網址", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                WebsiteTextBox.Text = "";
             }
         }
-
-
-        // 預設為淺色模式
-        bool DarkMode = false;
 
         // 深色模式
         private void DarkModeButton_Click(object sender, EventArgs e)
@@ -128,7 +128,6 @@ namespace iamReader
             WebsiteTextBox.Visible = true;
             DownloadButton.Visible = true;
             DownloadButton.Enabled = true;
-            PleaseEnterLabel.Visible = false;
 
             LoadingLabel.Visible = false;
 
@@ -156,7 +155,6 @@ namespace iamReader
             WebsiteLabel.Visible = false;
             WebsiteTextBox.Visible = false;
             DownloadButton.Visible = false;
-            PleaseEnterLabel.Visible = false;
 
             LoadingLabel.Visible = false;
 
@@ -195,7 +193,6 @@ namespace iamReader
             WebsiteLabel.Visible = false;
             WebsiteTextBox.Visible = false;
             DownloadButton.Visible = false;
-            PleaseEnterLabel.Visible = false;
 
             LoadingLabel.Visible = false;
 
@@ -213,10 +210,11 @@ namespace iamReader
         private async Task Read()
         {
             string url = WebsiteTextBox.Text;
-            Console.WriteLine("Download from: {0}", url);
-            getHtml.Get_Website(url);
-            await getHtml.GetHtmlAsync();
-            Console.WriteLine("Loading content");
+            //Console.WriteLine("Download from: {0}", url);
+            //getHtml.Get_Website(url);
+            //await getHtml.GetHtmlAsync();
+            //Console.WriteLine("Loading content");
+            NowBook = await GetHtml.DownloadBookAsync(url);
         }
 
         private void ReadScene()
@@ -242,7 +240,6 @@ namespace iamReader
             WebsiteLabel.Visible = false;
             WebsiteTextBox.Visible = false;
             DownloadButton.Visible = false;
-            PleaseEnterLabel.Visible = false;
 
             LoadingLabel.Visible = false;
 
@@ -276,7 +273,6 @@ namespace iamReader
             WebsiteLabel.Visible = false;
             WebsiteTextBox.Visible = false;
             DownloadButton.Visible = false;
-            PleaseEnterLabel.Visible = false;
 
             LoadingLabel.Visible = true;
 
@@ -288,7 +284,6 @@ namespace iamReader
             FontSizeTextBox.Visible = false;
             IncreaseFontSize.Visible = false;
             DecreaseFontSize.Visible = false;
-
         }
 
         private void OpenCloseBook(bool open)
@@ -322,22 +317,20 @@ namespace iamReader
         {
             Button Button = (Button)sender;
             ChapterLabel.Text = Button.Text;
-            for (int i = 0; i < getHtml.book.chapter_List.Count; i++)
+            for (int i = 0; i < NowBook.chapter_List.Count; i++)
             {
-                if (getHtml.book.chapter_List.ElementAt(i).Title == Button.Text)
+                if (NowBook.chapter_List.ElementAt(i).Title == Button.Text)
                 {
-                    NovelTextBox.Text = getHtml.book.chapter_List.ElementAt(i).Content;
+                    NovelTextBox.Text = NowBook.chapter_List.ElementAt(i).Content;
                 }
             }
             OpenCloseBook(true);
             GenerateChapterButton(false);
             ReadScene();
         }
-        List<Button> ChapterButtonList = new List<Button>();
-        List<Panel> ChapterPanelList = new List<Panel>();
         private void GenerateChapterButton(bool Generate)
         {
-            int ChapterNum = getHtml.book.chapter_List.Count;
+            int ChapterNum = NowBook.chapter_List.Count;
             if (Generate)
             {
                 Panel ChapterPanel = new Panel();
@@ -357,7 +350,7 @@ namespace iamReader
                     btn.Location = new Point(ButtonLocationX, ButtonLocationY);
                     Controls.Add(btn);
                     btn.Click += new EventHandler(ChapterButton_click);
-                    btn.Text = getHtml.book.chapter_List.ElementAt(i).Title;
+                    btn.Text = NowBook.chapter_List.ElementAt(i).Title;
 
                     if (!DarkMode)
                     {

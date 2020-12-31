@@ -45,14 +45,16 @@
             this.OpenBookTimer = new System.Windows.Forms.Timer(this.components);
             this.CloseBookTimer = new System.Windows.Forms.Timer(this.components);
             this.BackToChapterButton = new System.Windows.Forms.Button();
+            this.PleaseEnterLabel = new System.Windows.Forms.Label();
+            this.LoadingLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // WebsiteTextBox
             // 
-            this.WebsiteTextBox.Location = new System.Drawing.Point(175, 390);
-            this.WebsiteTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.WebsiteTextBox.Location = new System.Drawing.Point(182, 418);
+            this.WebsiteTextBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.WebsiteTextBox.Name = "WebsiteTextBox";
-            this.WebsiteTextBox.Size = new System.Drawing.Size(270, 22);
+            this.WebsiteTextBox.Size = new System.Drawing.Size(359, 25);
             this.WebsiteTextBox.TabIndex = 0;
             // 
             // DownloadButton
@@ -60,10 +62,10 @@
             this.DownloadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
             this.DownloadButton.Font = new System.Drawing.Font("細明體-ExtB", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.DownloadButton.ForeColor = System.Drawing.Color.Linen;
-            this.DownloadButton.Location = new System.Drawing.Point(457, 429);
-            this.DownloadButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DownloadButton.Location = new System.Drawing.Point(558, 466);
+            this.DownloadButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(58, 27);
+            this.DownloadButton.Size = new System.Drawing.Size(77, 34);
             this.DownloadButton.TabIndex = 1;
             this.DownloadButton.Text = "下載";
             this.DownloadButton.UseVisualStyleBackColor = false;
@@ -74,10 +76,10 @@
             this.DarkModeButton.BackColor = System.Drawing.Color.Transparent;
             this.DarkModeButton.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.DarkModeButton.ForeColor = System.Drawing.Color.White;
-            this.DarkModeButton.Location = new System.Drawing.Point(556, 16);
-            this.DarkModeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DarkModeButton.Location = new System.Drawing.Point(286, 11);
+            this.DarkModeButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.DarkModeButton.Name = "DarkModeButton";
-            this.DarkModeButton.Size = new System.Drawing.Size(123, 30);
+            this.DarkModeButton.Size = new System.Drawing.Size(91, 38);
             this.DarkModeButton.TabIndex = 3;
             this.DarkModeButton.Text = "深色模式";
             this.DarkModeButton.UseVisualStyleBackColor = false;
@@ -88,10 +90,10 @@
             this.HomeButton.BackColor = System.Drawing.Color.Transparent;
             this.HomeButton.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;
-            this.HomeButton.Location = new System.Drawing.Point(556, 179);
-            this.HomeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HomeButton.Location = new System.Drawing.Point(469, 12);
+            this.HomeButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(123, 34);
+            this.HomeButton.Size = new System.Drawing.Size(72, 38);
             this.HomeButton.TabIndex = 4;
             this.HomeButton.Text = "回主頁";
             this.HomeButton.UseVisualStyleBackColor = false;
@@ -101,12 +103,10 @@
             // 
             this.NovelTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.NovelTextBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.NovelTextBox.Location = new System.Drawing.Point(21, 84);
-            this.NovelTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.NovelTextBox.MaximumSize = new System.Drawing.Size(1000, 1000);
-            this.NovelTextBox.MinimumSize = new System.Drawing.Size(300, 600);
+            this.NovelTextBox.Location = new System.Drawing.Point(13, 89);
+            this.NovelTextBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.NovelTextBox.Name = "NovelTextBox";
-            this.NovelTextBox.Size = new System.Drawing.Size(529, 23);
+            this.NovelTextBox.Size = new System.Drawing.Size(704, 27);
             this.NovelTextBox.TabIndex = 6;
             // 
             // ChapterLabel
@@ -114,29 +114,30 @@
             this.ChapterLabel.AutoSize = true;
             this.ChapterLabel.BackColor = System.Drawing.Color.Transparent;
             this.ChapterLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChapterLabel.Location = new System.Drawing.Point(21, 30);
-            this.ChapterLabel.MaximumSize = new System.Drawing.Size(199, 30);
-            this.ChapterLabel.MinimumSize = new System.Drawing.Size(199, 30);
+            this.ChapterLabel.Location = new System.Drawing.Point(13, 9);
+            this.ChapterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ChapterLabel.MaximumSize = new System.Drawing.Size(265, 37);
+            this.ChapterLabel.MinimumSize = new System.Drawing.Size(265, 37);
             this.ChapterLabel.Name = "ChapterLabel";
-            this.ChapterLabel.Size = new System.Drawing.Size(199, 30);
+            this.ChapterLabel.Size = new System.Drawing.Size(265, 37);
             this.ChapterLabel.TabIndex = 7;
             this.ChapterLabel.Text = "章節";
             this.ChapterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FontSizeTextBox
             // 
-            this.FontSizeTextBox.Location = new System.Drawing.Point(556, 70);
-            this.FontSizeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FontSizeTextBox.Location = new System.Drawing.Point(555, 20);
+            this.FontSizeTextBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.FontSizeTextBox.Name = "FontSizeTextBox";
-            this.FontSizeTextBox.Size = new System.Drawing.Size(37, 22);
+            this.FontSizeTextBox.Size = new System.Drawing.Size(48, 25);
             this.FontSizeTextBox.TabIndex = 8;
             // 
             // IncreaseFontSize
             // 
-            this.IncreaseFontSize.Location = new System.Drawing.Point(625, 70);
-            this.IncreaseFontSize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.IncreaseFontSize.Location = new System.Drawing.Point(611, 17);
+            this.IncreaseFontSize.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.IncreaseFontSize.Name = "IncreaseFontSize";
-            this.IncreaseFontSize.Size = new System.Drawing.Size(37, 22);
+            this.IncreaseFontSize.Size = new System.Drawing.Size(49, 28);
             this.IncreaseFontSize.TabIndex = 9;
             this.IncreaseFontSize.Text = "+";
             this.IncreaseFontSize.UseVisualStyleBackColor = true;
@@ -144,10 +145,10 @@
             // 
             // DecreaseFontSize
             // 
-            this.DecreaseFontSize.Location = new System.Drawing.Point(669, 70);
-            this.DecreaseFontSize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DecreaseFontSize.Location = new System.Drawing.Point(670, 17);
+            this.DecreaseFontSize.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.DecreaseFontSize.Name = "DecreaseFontSize";
-            this.DecreaseFontSize.Size = new System.Drawing.Size(37, 22);
+            this.DecreaseFontSize.Size = new System.Drawing.Size(49, 28);
             this.DecreaseFontSize.TabIndex = 10;
             this.DecreaseFontSize.Text = "-";
             this.DecreaseFontSize.UseVisualStyleBackColor = true;
@@ -158,10 +159,10 @@
             this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
             this.ExitButton.Font = new System.Drawing.Font("細明體-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.ExitButton.ForeColor = System.Drawing.Color.Linen;
-            this.ExitButton.Location = new System.Drawing.Point(289, 507);
-            this.ExitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ExitButton.Location = new System.Drawing.Point(265, 531);
+            this.ExitButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(140, 48);
+            this.ExitButton.Size = new System.Drawing.Size(187, 60);
             this.ExitButton.TabIndex = 14;
             this.ExitButton.Text = "離開";
             this.ExitButton.UseVisualStyleBackColor = false;
@@ -173,9 +174,10 @@
             this.WebsiteLabel.BackColor = System.Drawing.Color.Transparent;
             this.WebsiteLabel.Font = new System.Drawing.Font("細明體-ExtB", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.WebsiteLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
-            this.WebsiteLabel.Location = new System.Drawing.Point(171, 352);
+            this.WebsiteLabel.Location = new System.Drawing.Point(177, 370);
+            this.WebsiteLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.WebsiteLabel.Name = "WebsiteLabel";
-            this.WebsiteLabel.Size = new System.Drawing.Size(93, 19);
+            this.WebsiteLabel.Size = new System.Drawing.Size(110, 24);
             this.WebsiteLabel.TabIndex = 15;
             this.WebsiteLabel.Text = "輸入網址";
             // 
@@ -184,10 +186,10 @@
             this.StartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
             this.StartButton.Font = new System.Drawing.Font("細明體-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.StartButton.ForeColor = System.Drawing.Color.Linen;
-            this.StartButton.Location = new System.Drawing.Point(289, 445);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StartButton.Location = new System.Drawing.Point(265, 453);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(140, 48);
+            this.StartButton.Size = new System.Drawing.Size(187, 60);
             this.StartButton.TabIndex = 12;
             this.StartButton.Text = "開始";
             this.StartButton.UseVisualStyleBackColor = false;
@@ -198,23 +200,50 @@
             this.BackToChapterButton.BackColor = System.Drawing.Color.Transparent;
             this.BackToChapterButton.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.BackToChapterButton.ForeColor = System.Drawing.Color.White;
-            this.BackToChapterButton.Location = new System.Drawing.Point(556, 124);
-            this.BackToChapterButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BackToChapterButton.Location = new System.Drawing.Point(385, 12);
+            this.BackToChapterButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.BackToChapterButton.Name = "BackToChapterButton";
-            this.BackToChapterButton.Size = new System.Drawing.Size(164, 42);
+            this.BackToChapterButton.Size = new System.Drawing.Size(76, 38);
             this.BackToChapterButton.TabIndex = 16;
             this.BackToChapterButton.Text = "回章節";
             this.BackToChapterButton.UseVisualStyleBackColor = false;
             this.BackToChapterButton.Click += new System.EventHandler(this.BackToChapterButton_Click);
             // 
+            // PleaseEnterLabel
+            // 
+            this.PleaseEnterLabel.AutoSize = true;
+            this.PleaseEnterLabel.BackColor = System.Drawing.Color.Transparent;
+            this.PleaseEnterLabel.Font = new System.Drawing.Font("細明體_HKSCS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.PleaseEnterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.PleaseEnterLabel.Location = new System.Drawing.Point(178, 453);
+            this.PleaseEnterLabel.Name = "PleaseEnterLabel";
+            this.PleaseEnterLabel.Size = new System.Drawing.Size(114, 20);
+            this.PleaseEnterLabel.TabIndex = 17;
+            this.PleaseEnterLabel.Text = "請輸入網址";
+            // 
+            // LoadingLabel
+            // 
+            this.LoadingLabel.AutoSize = true;
+            this.LoadingLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LoadingLabel.Font = new System.Drawing.Font("文鼎明體EB", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.LoadingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(92)))), ((int)(((byte)(65)))));
+            this.LoadingLabel.Location = new System.Drawing.Point(238, 418);
+            this.LoadingLabel.Name = "LoadingLabel";
+            this.LoadingLabel.Size = new System.Drawing.Size(223, 37);
+            this.LoadingLabel.TabIndex = 18;
+            this.LoadingLabel.Text = "下載中.....";
+            this.LoadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(732, 953);
+            this.Controls.Add(this.LoadingLabel);
+            this.Controls.Add(this.PleaseEnterLabel);
             this.Controls.Add(this.BackToChapterButton);
             this.Controls.Add(this.WebsiteLabel);
             this.Controls.Add(this.DownloadButton);
@@ -230,7 +259,7 @@
             this.Controls.Add(this.WebsiteTextBox);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "iamReader";
@@ -256,6 +285,8 @@
         private System.Windows.Forms.Timer OpenBookTimer;
         private System.Windows.Forms.Timer CloseBookTimer;
         private System.Windows.Forms.Button BackToChapterButton;
+        private System.Windows.Forms.Label PleaseEnterLabel;
+        private System.Windows.Forms.Label LoadingLabel;
     }
 }
 

@@ -74,11 +74,11 @@
             // 
             this.DarkModeButton.BackColor = System.Drawing.Color.Transparent;
             this.DarkModeButton.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.DarkModeButton.ForeColor = System.Drawing.Color.White;
+            this.DarkModeButton.ForeColor = System.Drawing.Color.Black;
             this.DarkModeButton.Location = new System.Drawing.Point(286, 11);
             this.DarkModeButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.DarkModeButton.Name = "DarkModeButton";
-            this.DarkModeButton.Size = new System.Drawing.Size(91, 38);
+            this.DarkModeButton.Size = new System.Drawing.Size(104, 38);
             this.DarkModeButton.TabIndex = 3;
             this.DarkModeButton.Text = "深色模式";
             this.DarkModeButton.UseVisualStyleBackColor = false;
@@ -88,38 +88,38 @@
             // 
             this.HomeButton.BackColor = System.Drawing.Color.Transparent;
             this.HomeButton.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.HomeButton.ForeColor = System.Drawing.Color.White;
-            this.HomeButton.Location = new System.Drawing.Point(469, 12);
+            this.HomeButton.ForeColor = System.Drawing.Color.Black;
+            this.HomeButton.Location = new System.Drawing.Point(482, 12);
             this.HomeButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.HomeButton.Name = "HomeButton";
             this.HomeButton.Size = new System.Drawing.Size(72, 38);
             this.HomeButton.TabIndex = 4;
-            this.HomeButton.Text = "回主頁";
+            this.HomeButton.Text = "主頁";
             this.HomeButton.UseVisualStyleBackColor = false;
             this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             // 
             // NovelTextBox
             // 
             this.NovelTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.NovelTextBox.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.NovelTextBox.Location = new System.Drawing.Point(13, 89);
+            this.NovelTextBox.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.NovelTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.NovelTextBox.Location = new System.Drawing.Point(15, 89);
             this.NovelTextBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.NovelTextBox.Name = "NovelTextBox";
-            this.NovelTextBox.Size = new System.Drawing.Size(704, 27);
+            this.NovelTextBox.Size = new System.Drawing.Size(704, 34);
             this.NovelTextBox.TabIndex = 6;
             // 
             // ChapterLabel
             // 
             this.ChapterLabel.AutoSize = true;
             this.ChapterLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ChapterLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChapterLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.ChapterLabel.Location = new System.Drawing.Point(13, 9);
+            this.ChapterLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ChapterLabel.Location = new System.Drawing.Point(30, 11);
             this.ChapterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ChapterLabel.MaximumSize = new System.Drawing.Size(265, 37);
-            this.ChapterLabel.MinimumSize = new System.Drawing.Size(265, 37);
+            this.ChapterLabel.MinimumSize = new System.Drawing.Size(200, 37);
             this.ChapterLabel.Name = "ChapterLabel";
-            this.ChapterLabel.Size = new System.Drawing.Size(265, 37);
+            this.ChapterLabel.Size = new System.Drawing.Size(200, 37);
             this.ChapterLabel.TabIndex = 7;
             this.ChapterLabel.Text = "章節";
             this.ChapterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -127,7 +127,7 @@
             // FontSizeTextBox
             // 
             this.FontSizeTextBox.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FontSizeTextBox.Location = new System.Drawing.Point(549, 13);
+            this.FontSizeTextBox.Location = new System.Drawing.Point(562, 13);
             this.FontSizeTextBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.FontSizeTextBox.Multiline = true;
             this.FontSizeTextBox.Name = "FontSizeTextBox";
@@ -138,7 +138,7 @@
             // IncreaseFontSize
             // 
             this.IncreaseFontSize.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.IncreaseFontSize.Location = new System.Drawing.Point(611, 13);
+            this.IncreaseFontSize.Location = new System.Drawing.Point(624, 13);
             this.IncreaseFontSize.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.IncreaseFontSize.Name = "IncreaseFontSize";
             this.IncreaseFontSize.Size = new System.Drawing.Size(49, 38);
@@ -150,7 +150,7 @@
             // DecreaseFontSize
             // 
             this.DecreaseFontSize.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.DecreaseFontSize.Location = new System.Drawing.Point(668, 13);
+            this.DecreaseFontSize.Location = new System.Drawing.Point(681, 13);
             this.DecreaseFontSize.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.DecreaseFontSize.Name = "DecreaseFontSize";
             this.DecreaseFontSize.Size = new System.Drawing.Size(49, 38);
@@ -204,13 +204,13 @@
             // 
             this.BackToChapterButton.BackColor = System.Drawing.Color.Transparent;
             this.BackToChapterButton.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BackToChapterButton.ForeColor = System.Drawing.Color.White;
-            this.BackToChapterButton.Location = new System.Drawing.Point(385, 12);
+            this.BackToChapterButton.ForeColor = System.Drawing.Color.Black;
+            this.BackToChapterButton.Location = new System.Drawing.Point(398, 11);
             this.BackToChapterButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.BackToChapterButton.Name = "BackToChapterButton";
             this.BackToChapterButton.Size = new System.Drawing.Size(76, 38);
             this.BackToChapterButton.TabIndex = 16;
-            this.BackToChapterButton.Text = "回章節";
+            this.BackToChapterButton.Text = "章節";
             this.BackToChapterButton.UseVisualStyleBackColor = false;
             this.BackToChapterButton.Click += new System.EventHandler(this.BackToChapterButton_Click);
             // 

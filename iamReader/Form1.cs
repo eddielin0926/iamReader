@@ -56,25 +56,27 @@ namespace iamReader
                 Image Background = new Bitmap(path);
                 this.BackgroundImage = Background;
 
-                NovelTextBox.BackColor = Color.FromArgb(255, 255, 255);
-                NovelTextBox.ForeColor = Color.FromArgb(119, 92, 65);
+                NovelTextBox.BackColor = Color.WhiteSmoke;
+                NovelTextBox.ForeColor = Color.Black;
 
-                ChapterLabel.BackColor = Color.FromArgb(255, 255, 255);
-                ChapterLabel.ForeColor = Color.FromArgb(119, 92, 65);
+                ChapterLabel.ForeColor = Color.Black;
 
-                DarkModeButton.BackColor = Color.FromArgb(64, 64, 64);
-                DarkModeButton.ForeColor = Color.FromArgb(119, 92, 65);
+                DarkModeButton.BackColor = Color.Transparent;
+                DarkModeButton.ForeColor = Color.Black;
 
-                HomeButton.BackColor = Color.FromArgb(64, 64, 64);
-                HomeButton.ForeColor = Color.FromArgb(119, 92, 65);
+                HomeButton.BackColor = Color.Transparent;
+                HomeButton.ForeColor = Color.Black;
 
-                BackToChapterButton.BackColor = Color.FromArgb(64, 64, 64);
-                BackToChapterButton.ForeColor = Color.FromArgb(119, 92, 65);
+                BackToChapterButton.BackColor = Color.Transparent;
+                BackToChapterButton.ForeColor = Color.Black;
 
-                IncreaseFontSize.BackColor = Color.FromArgb(64, 64, 64);
-                IncreaseFontSize.ForeColor = Color.FromArgb(119, 92, 65);
-                DecreaseFontSize.BackColor = Color.FromArgb(64, 64, 64);
-                DecreaseFontSize.ForeColor = Color.FromArgb(119, 92, 65);
+                FontSizeTextBox.BackColor = Color.WhiteSmoke;
+                FontSizeTextBox.ForeColor = Color.Black;
+
+                IncreaseFontSize.BackColor = Color.Transparent;
+                IncreaseFontSize.ForeColor = Color.Black;
+                DecreaseFontSize.BackColor = Color.Transparent;
+                DecreaseFontSize.ForeColor = Color.Black;
 
                 DarkModeButton.Text = "深色模式";
             }
@@ -90,24 +92,26 @@ namespace iamReader
                 this.BackgroundImage = Background;
 
                 NovelTextBox.BackColor = Color.FromArgb(64, 64, 64);
-                NovelTextBox.ForeColor = Color.FromArgb(255, 255, 255);
+                NovelTextBox.ForeColor = Color.White;
 
-                ChapterLabel.BackColor = Color.FromArgb(64, 64, 64);
-                ChapterLabel.ForeColor = Color.FromArgb(255, 255, 255);
+                ChapterLabel.ForeColor = Color.White;
 
-                DarkModeButton.BackColor = Color.FromArgb(255, 255, 255);
-                DarkModeButton.ForeColor = Color.FromArgb(64, 64, 64);
+                DarkModeButton.BackColor = Color.FromArgb(64, 64, 64);
+                DarkModeButton.ForeColor = Color.White;
 
-                HomeButton.BackColor = Color.FromArgb(255, 255, 255);
-                HomeButton.ForeColor = Color.FromArgb(64, 64, 64);
+                HomeButton.BackColor = Color.FromArgb(64, 64, 64);
+                HomeButton.ForeColor = Color.White;
 
-                BackToChapterButton.BackColor = Color.FromArgb(255, 255, 255);
-                BackToChapterButton.ForeColor = Color.FromArgb(64, 64, 64);
+                BackToChapterButton.BackColor = Color.FromArgb(64, 64, 64);
+                BackToChapterButton.ForeColor = Color.White;
 
-                IncreaseFontSize.BackColor = Color.FromArgb(255, 255, 255);
-                IncreaseFontSize.ForeColor = Color.FromArgb(64, 64, 64);
-                DecreaseFontSize.BackColor = Color.FromArgb(255, 255, 255);
-                DecreaseFontSize.ForeColor = Color.FromArgb(64, 64, 64);
+                FontSizeTextBox.BackColor = Color.FromArgb(64, 64, 64);
+                FontSizeTextBox.ForeColor = Color.White;
+
+                IncreaseFontSize.BackColor = Color.FromArgb(64, 64, 64);
+                IncreaseFontSize.ForeColor = Color.White;
+                DecreaseFontSize.BackColor = Color.FromArgb(64, 64, 64);
+                DecreaseFontSize.ForeColor = Color.White;
 
                 DarkModeButton.Text = "淺色模式";
             }

@@ -224,6 +224,7 @@ namespace iamReader
                 NowBook = await GetHtml.DownloadBookAsync(url);
             }
             NowBook.Title = title;
+            BookSystem.CloseBook(NowBook);
             Console.WriteLine("Loading content");
         }
 
@@ -318,7 +319,6 @@ namespace iamReader
         // 回主頁
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            BookSystem.CloseBook(NowBook);
             OpenCloseBook(false);
             Home();
         }

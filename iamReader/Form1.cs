@@ -210,11 +210,11 @@ namespace iamReader
         private async Task Read()
         {
             string url = WebsiteTextBox.Text;
-            //Console.WriteLine("Download from: {0}", url);
-            //getHtml.Get_Website(url);
-            //await getHtml.GetHtmlAsync();
-            //Console.WriteLine("Loading content");
-            NowBook = await GetHtml.DownloadBookAsync(url);
+            Console.WriteLine("Download from: {0}", url);
+            getHtml.Get_Website(url);
+            NowBook = await getHtml.GetHtmlAsync();
+            Console.WriteLine("Loading content");
+            //NowBook = await GetHtml.DownloadBookAsync(url);
         }
 
         private void ReadScene()

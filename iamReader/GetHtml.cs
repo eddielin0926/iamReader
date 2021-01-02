@@ -17,7 +17,7 @@ namespace iamReader
     {
         public Book book = new Book();
         static public Chapter chapter;
-        public async Task GetHtmlAsync()
+        public async Task<Book> GetHtmlAsync()
         {
             var stopwatch = Stopwatch.StartNew();
             HttpClient httpClient = new HttpClient();
@@ -60,6 +60,8 @@ namespace iamReader
 
             stopwatch.Stop();
             Console.WriteLine($"Elapsed time:          {stopwatch.Elapsed}\n");
+
+            return book;
         }
         public void Get_Website(string url)
         {

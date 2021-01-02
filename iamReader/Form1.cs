@@ -212,7 +212,12 @@ namespace iamReader
             string url = WebsiteTextBox.Text;
             Console.WriteLine("Download from: {0}", url);
             getHtml.Get_Website(url);
-            NowBook = await getHtml.GetHtmlAsync();
+            string title = await GetHtml.GetBookTitleAsync(url);
+            NowBook = BookSystem.OpenBook(title);
+            if (NowBook == null)
+            {
+                NowBook = await getHtml.GetHtmlAsync();
+            }
             Console.WriteLine("Loading content");
             //NowBook = await GetHtml.DownloadBookAsync(url);
         }
@@ -308,9 +313,9 @@ namespace iamReader
         // 回主頁
         private void HomeButton_Click(object sender, EventArgs e)
         {
+            BookSystem.CloseBook(NowBook);
             OpenCloseBook(false);
             Home();
-
         }
 
         private void ChapterButton_click(object sender, EventArgs e)

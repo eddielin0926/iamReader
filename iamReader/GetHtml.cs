@@ -77,6 +77,15 @@ namespace iamReader
         {
             MaxResponseContentBufferSize = 1_000_000
         };
+        public static async Task<string> GetBookTitleAsync(string sourceUrl)
+        {
+            string tableHtmlString = await s_client.GetStringAsync(sourceUrl);
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(tableHtmlString);
+            char[] charsToTrim = { '《', '》', ' ' };
+            string title = document.DocumentNode.SelectSingleNode("//span[@class='title']").InnerText;
+            return title;
+        }
         public static async Task<Book> DownloadBookAsync(string sourceUrl)
         {
             Book book = new Book();

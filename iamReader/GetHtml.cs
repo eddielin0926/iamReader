@@ -71,7 +71,7 @@ namespace iamReader
         /// <summary>
         /// Eddie's version
         /// </summary>
-        static IEnumerable<string> s_urlList = null;
+        static IEnumerable<Chapter> s_urlList = null;
         static public List<string> contentList = new List<string>();
         static readonly HttpClient s_client = new HttpClient
         {
@@ -103,37 +103,34 @@ namespace iamReader
             document.LoadHtml(tableHtmlString);
 
             var chapterList = document.DocumentNode.SelectNodes("//ul[@class='nav chapter-list']/li/a");
-            var urlList = new List<string>();
-            foreach (var chapter in chapterList)
+            foreach (var node in chapterList)
             {
-                string chapterTitle = chapter.InnerText;
-                string chapterUrl = chapter.Attributes["href"].Value;
-                urlList.Add("http:" + chapterUrl);
+                Chapter chapter = new Chapter();
+                chapter.Title = node.InnerText;
+                chapter.Website = "http:" + node.Attributes["href"].Value;
+                book.chapter_List.Add(chapter);
 
-                Console.WriteLine("{0} {1}", PadRightChinese(chapterTitle, 35), chapterUrl);
+                Console.WriteLine("{0} {1}", PadRightChinese(chapter.Title, 35), chapter.Website);
             }
 
-            s_urlList = urlList.ToArray();
+            s_urlList = book.chapter_List.ToArray();
 
             /// <summary>
             /// Thread Pool
             /// </summary>
-            IEnumerable<Task<string>> downloadTasksQuery =
+            IEnumerable<Task<Chapter>> downloadTasksQuery =
                 from url in s_urlList
                 select ProcessUrlAsync(url, s_client);
 
-            List<Task<string>> downloadTasks = downloadTasksQuery.ToList();
+            List<Task<Chapter>> downloadTasks = downloadTasksQuery.ToList();
 
             int total = 0;
             int totalTask = s_urlList.Count();
             int i = 0;
-            string content = null;
             while (downloadTasks.Any())
             {
-                Task<string> finishedTask = await Task.WhenAny(downloadTasks);
+                Task<Chapter> finishedTask = await Task.WhenAny(downloadTasks);
                 downloadTasks.Remove(finishedTask);
-                content = await finishedTask;
-                contentList.Add(content);
                 Console.Write("\rDownloading ... {0}% ", ++i * 100 / totalTask);
             }
 
@@ -149,21 +146,20 @@ namespace iamReader
             /// <summary>
             /// Parser HTML of Paragraph
             /// </summary>
-            foreach (var chapter in contentList)
+            foreach (var chapter in book.chapter_List)
             {
-                book.chapter_List.Add(ParserParagraph(chapter));
+                ParserParagraph(chapter);
             }
             return book;
         }
 
-        static async Task<string> ProcessUrlAsync(string url, HttpClient client)
+        static async Task<Chapter> ProcessUrlAsync(Chapter chapter, HttpClient client)
         {
-            string content = null;
             for (int i = 0; i < 10; i++)
             {
                 try
                 {
-                    content = await client.GetStringAsync(url);
+                    chapter.Content = await client.GetStringAsync(chapter.Website);
                     break;
                 }
                 catch (Exception)
@@ -171,20 +167,17 @@ namespace iamReader
                     Thread.Sleep(100);
                 }
             }
-            if (content == null)
+            if (chapter.Content == null)
             {
-                Console.WriteLine($"Failed: {url,-60}");
-                return "";
+                Console.WriteLine($"Failed: {chapter.Website,-60}");
             }
-            return content;
+            return chapter;
         }
 
-        static Chapter ParserParagraph(string html)
+        static Chapter ParserParagraph(Chapter chapter)
         {
-            Chapter chapter = new Chapter();
             HtmlDocument document = new HtmlDocument();
-            document.LoadHtml(html);
-            chapter.Title = document.DocumentNode.SelectSingleNode("//div[@class='name']").InnerText;
+            document.LoadHtml(chapter.Content);
             chapter.Content = document.DocumentNode.SelectSingleNode("//div[@class='content']").InnerText;
             return chapter;
         }

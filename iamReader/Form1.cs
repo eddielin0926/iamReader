@@ -216,10 +216,11 @@ namespace iamReader
             NowBook = BookSystem.OpenBook(title);
             if (NowBook == null)
             {
-                NowBook = await getHtml.GetHtmlAsync();
+                // NowBook = await getHtml.GetHtmlAsync();
+                NowBook = await GetHtml.DownloadBookAsync(url);
             }
+            NowBook.Title = title;
             Console.WriteLine("Loading content");
-            //NowBook = await GetHtml.DownloadBookAsync(url);
         }
 
         private void ReadScene()
